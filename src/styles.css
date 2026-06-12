@@ -62,12 +62,20 @@ body {
 
 .nm-options { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
 .nm-option {
-  text-align: left; background: #fff; border: 1px solid var(--nm-line);
-  border-radius: var(--nm-radius); padding: 12px 14px; font: inherit; cursor: pointer;
-  transition: border-color 0.15s, transform 0.05s;
+  position: relative; text-align: left; background: #fff; border: 1px solid var(--nm-line);
+  border-radius: var(--nm-radius); padding: 13px 38px 13px 16px; font: inherit; cursor: pointer;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05);
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.08s;
 }
-.nm-option:hover { border-color: var(--nm-purple); }
-.nm-option:active { transform: scale(0.99); }
+.nm-option::after {
+  content: "›"; position: absolute; right: 16px; top: 50%;
+  transform: translateY(-50%) translateX(-5px);
+  color: var(--nm-pink); font-size: 22px; font-weight: 600;
+  opacity: 0; transition: opacity 0.15s, transform 0.15s;
+}
+.nm-option:hover { border-color: var(--nm-pink); box-shadow: 0 4px 0 rgba(255, 46, 136, 0.16); transform: translateY(-1px); }
+.nm-option:hover::after { opacity: 1; transform: translateY(-50%) translateX(0); }
+.nm-option:active { transform: translateY(1px); box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06); }
 .nm-option .nm-text { font-size: 15px; line-height: 1.4; }
 
 .nm-cta-primary {
@@ -127,4 +135,33 @@ body {
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ---- entrance animations ---- */
+@keyframes nm-pop { from { opacity: 0; transform: translateY(12px) scale(0.88); } to { opacity: 1; transform: none; } }
+@keyframes nm-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; } }
+@keyframes nm-fade { from { opacity: 0; } to { opacity: 1; } }
+
+.nm-cover .nm-logo--md { animation: nm-fade 0.5s ease both; }
+.nm-speech { animation: nm-pop 0.55s cubic-bezier(0.2, 0.9, 0.25, 1.25) both; }
+.nm-cover-sub { animation: nm-rise 0.5s ease 0.18s both; }
+.nm-cover-foot { animation: nm-rise 0.5s ease 0.28s both; }
+.nm-cover-ast { animation: nm-fade 0.8s ease 0.3s both; }
+.nm-float { animation: nm-fade 0.6s ease both; }
+.nm-float:nth-of-type(1) { animation-delay: 0.22s; }
+.nm-float:nth-of-type(2) { animation-delay: 0.34s; }
+.nm-float:nth-of-type(3) { animation-delay: 0.46s; }
+.nm-float:nth-of-type(4) { animation-delay: 0.58s; }
+
+.nm-chip { animation: nm-rise 0.4s ease both; }
+.nm-bubble { animation: nm-rise 0.4s ease 0.06s both; }
+.nm-option { animation: nm-rise 0.4s ease both; }
+.nm-option:nth-child(1) { animation-delay: 0.10s; }
+.nm-option:nth-child(2) { animation-delay: 0.16s; }
+.nm-option:nth-child(3) { animation-delay: 0.22s; }
+.nm-option:nth-child(4) { animation-delay: 0.28s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .nm-cover .nm-logo--md, .nm-speech, .nm-cover-sub, .nm-cover-foot, .nm-cover-ast,
+  .nm-float, .nm-chip, .nm-bubble, .nm-option { animation: none; }
 }
