@@ -1,4 +1,5 @@
 import { archetypes, CLOSING_LINE, CTA_URL } from '../data/archetypes.js';
+import { icon } from './icons.js';
 
 const styleLabel = {
   zen: 'Zen',
@@ -9,7 +10,7 @@ const styleLabel = {
 
 export function renderIntro(root, { onStart }) {
   root.innerHTML = `
-    <div class="nm-brand"><i class="ti ti-asterisk" aria-hidden="true"></i> Nunca Madres</div>
+    <div class="nm-brand">${icon('asterisk', { size: 20, cls: 'nm-ast' })} Nunca Madres</div>
     <div class="nm-intro">
       <h1>¿Y los hijos pa' cuándo?</h1>
       <p>Todas hemos oído la pregunta necia. Descubre cómo respondes tú en 6 escenas.</p>
@@ -32,11 +33,11 @@ export function renderScene(root, { scene, index, total, onAnswer }) {
     )
     .join('');
   root.innerHTML = `
-    <div class="nm-brand"><i class="ti ti-asterisk" aria-hidden="true"></i> Nunca Madres
+    <div class="nm-brand">${icon('asterisk', { size: 20, cls: 'nm-ast' })} Nunca Madres
       <span style="margin-left:auto;font-size:12px;color:var(--nm-muted)">${index + 1} / ${total}</span>
     </div>
     <div class="nm-progress">${dots}</div>
-    <div class="nm-chip"><i class="ti ${scene.icon}" aria-hidden="true"></i> ${scene.faceta}</div>
+    <div class="nm-chip">${icon('asterisk', { size: 14, cls: 'nm-ast' })} ${scene.faceta}</div>
     <div class="nm-bubble">
       <div class="nm-avatar">${scene.speakerInitials}</div>
       <div class="nm-bubble-body">
@@ -58,11 +59,11 @@ export function buildResultCardHtml(result) {
     : '';
   return `
     <div class="nm-card" id="nm-card" style="background:${a.bg}">
-      <i class="ti ti-asterisk nm-confetti" style="top:14px;left:16px;font-size:16px" aria-hidden="true"></i>
-      <i class="ti ti-asterisk nm-confetti" style="top:40px;right:20px;font-size:22px" aria-hidden="true"></i>
-      <i class="ti ti-asterisk nm-confetti" style="bottom:18px;left:18px;font-size:14px" aria-hidden="true"></i>
+      ${icon('asterisk', { size: 18, cls: 'nm-confetti', style: 'top:14px;left:16px' })}
+      ${icon('asterisk', { size: 24, cls: 'nm-confetti', style: 'top:40px;right:20px' })}
+      ${icon('asterisk', { size: 15, cls: 'nm-confetti', style: 'bottom:18px;left:18px' })}
       <p class="nm-kicker">Tu resultado</p>
-      <div class="nm-badge"><i class="ti ${a.icon}" aria-hidden="true"></i></div>
+      <div class="nm-badge">${icon(a.icon, { size: 34, cls: 'nm-badge-icon' })}</div>
       <p class="nm-name">${a.name}</p>
       <p class="nm-tagline">${a.tagline}</p>
       ${toque}
@@ -77,11 +78,11 @@ export function renderResult(root, { result, onShare, onCta, onReplay }) {
     ${buildResultCardHtml(result)}
     <div class="nm-result-actions">
       <a class="nm-cta-primary" id="nm-cta" href="${CTA_URL}" target="_blank" rel="noopener"
-         style="background:var(--nm-purple)">Únete al Círculo Nunca Madres <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+         style="background:var(--nm-purple)">Únete al Círculo Nunca Madres <span aria-hidden="true">→</span></a>
       <div class="nm-share-row">
-        <button type="button" data-channel="whatsapp" aria-label="Compartir por WhatsApp"><i class="ti ti-brand-whatsapp"></i></button>
-        <button type="button" data-channel="instagram" aria-label="Compartir en Instagram"><i class="ti ti-brand-instagram"></i></button>
-        <button type="button" data-channel="copy" aria-label="Copiar liga"><i class="ti ti-link"></i></button>
+        <button type="button" data-channel="whatsapp" aria-label="Compartir por WhatsApp">${icon('whatsapp', { size: 22 })}</button>
+        <button type="button" data-channel="instagram" aria-label="Compartir en Instagram">${icon('instagram', { size: 22 })}</button>
+        <button type="button" data-channel="copy" aria-label="Copiar liga">${icon('link', { size: 22 })}</button>
       </div>
       <button class="nm-replay" type="button" id="nm-replay">Volver a jugar</button>
     </div>`;

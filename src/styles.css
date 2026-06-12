@@ -29,8 +29,10 @@ body {
   flex-direction: column;
 }
 
+.nm-icon { display: inline-block; vertical-align: middle; }
+.nm-ast { color: var(--nm-pink); }
+
 .nm-brand { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; }
-.nm-brand .ti-asterisk { color: var(--nm-pink); font-size: 20px; }
 
 .nm-progress { display: flex; gap: 4px; margin: 14px 0 18px; }
 .nm-progress span { height: 4px; border-radius: 4px; background: var(--nm-pink-soft); flex: 1; }
@@ -87,7 +89,7 @@ body {
   width: 72px; height: 72px; margin: 0 auto 14px; border-radius: 50%;
   background: #cecbf6; display: flex; align-items: center; justify-content: center;
 }
-.nm-card .nm-badge .ti { font-size: 36px; color: #3c3489; }
+.nm-card .nm-badge .nm-badge-icon { color: #3c3489; }
 .nm-card .nm-name { margin: 0; font-size: 26px; font-weight: 500; color: var(--nm-purple-deep); }
 .nm-card .nm-tagline { margin: 3px 0 16px; font-size: 14px; color: var(--nm-purple); }
 .nm-card .nm-desc { margin: 0 0 16px; font-size: 14px; line-height: 1.5; color: #3c3489; }
@@ -95,7 +97,7 @@ body {
 
 .nm-result-actions { margin-top: 18px; display: flex; flex-direction: column; gap: 12px; }
 .nm-share-row { display: flex; align-items: center; justify-content: center; gap: 20px; color: var(--nm-purple); }
-.nm-share-row button { background: none; border: none; color: inherit; cursor: pointer; font-size: 22px; }
+.nm-share-row button { background: none; border: none; color: inherit; cursor: pointer; padding: 6px; line-height: 0; }
 .nm-replay { background: none; border: none; color: var(--nm-muted); font-size: 14px; cursor: pointer; text-decoration: underline; }
 
 .sr-only {

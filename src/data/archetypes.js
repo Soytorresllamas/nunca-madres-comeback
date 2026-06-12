@@ -9,7 +9,7 @@ export const archetypes = {
   zen: {
     name: 'La Zen',
     tagline: 'del "es mi vida"',
-    icon: 'ti-yoga',
+    icon: 'leaf',
     color: '#534AB7',
     bg: '#EEEDFE',
     description:
@@ -18,7 +18,7 @@ export const archetypes = {
   sarcastica: {
     name: 'La Sarcástica',
     tagline: 'la del comeback listo',
-    icon: 'ti-mood-smile',
+    icon: 'smile',
     color: '#D4537E',
     bg: '#FBEAF0',
     description:
@@ -27,7 +27,7 @@ export const archetypes = {
   diplomatica: {
     name: 'La Diplomática',
     tagline: 'la de los límites elegantes',
-    icon: 'ti-hand-stop',
+    icon: 'bubble',
     color: '#D85A30',
     bg: '#FAECE7',
     description:
@@ -36,7 +36,7 @@ export const archetypes = {
   directa: {
     name: 'La Directa',
     tagline: 'la que lo dice sin filtro',
-    icon: 'ti-flame',
+    icon: 'flame',
     color: '#993C1D',
     bg: '#FAECE7',
     description:
