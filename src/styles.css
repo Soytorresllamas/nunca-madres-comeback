@@ -64,19 +64,27 @@ body {
 .nm-option {
   position: relative; text-align: left; background: #fff; border: 1px solid var(--nm-line);
   border-radius: var(--nm-radius); padding: 13px 38px 13px 16px; font: inherit; cursor: pointer;
+  color: var(--nm-ink); -webkit-appearance: none; appearance: none;
+  -webkit-tap-highlight-color: transparent;
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05);
   transition: border-color 0.15s, box-shadow 0.15s, transform 0.08s;
 }
+.nm-option .nm-text { font-size: 15px; line-height: 1.4; color: var(--nm-ink); }
 .nm-option::after {
   content: "›"; position: absolute; right: 16px; top: 50%;
   transform: translateY(-50%) translateX(-5px);
   color: var(--nm-pink); font-size: 22px; font-weight: 600;
   opacity: 0; transition: opacity 0.15s, transform 0.15s;
 }
-.nm-option:hover { border-color: var(--nm-pink); box-shadow: 0 4px 0 rgba(255, 46, 136, 0.16); transform: translateY(-1px); }
-.nm-option:hover::after { opacity: 1; transform: translateY(-50%) translateX(0); }
-.nm-option:active { transform: translateY(1px); box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06); }
-.nm-option .nm-text { font-size: 15px; line-height: 1.4; }
+.nm-option:active { transform: translateY(1px); box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06); border-color: var(--nm-pink); }
+
+@media (hover: hover) {
+  .nm-option:hover { border-color: var(--nm-pink); box-shadow: 0 4px 0 rgba(255, 46, 136, 0.16); transform: translateY(-1px); }
+  .nm-option:hover::after { opacity: 1; transform: translateY(-50%) translateX(0); }
+}
+@media (hover: none) {
+  .nm-option::after { opacity: 0.55; transform: translateY(-50%); }
+}
 
 .nm-cta-primary {
   display: block; text-align: center; text-decoration: none;
