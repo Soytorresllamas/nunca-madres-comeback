@@ -1,0 +1,93 @@
+import { archetypes, CLOSING_LINE, CTA_URL } from '../data/archetypes.js';
+
+const styleLabel = {
+  zen: 'Zen',
+  sarcastica: 'Sarcástica',
+  diplomatica: 'Diplomática',
+  directa: 'Directa',
+};
+
+export function renderIntro(root, { onStart }) {
+  root.innerHTML = `
+    <div class="nm-brand"><i class="ti ti-asterisk" aria-hidden="true"></i> Nunca Madres</div>
+    <div class="nm-intro">
+      <h1>¿Y los hijos pa' cuándo?</h1>
+      <p>Todas hemos oído la pregunta necia. Descubre cómo respondes tú en 6 escenas.</p>
+      <button class="nm-cta-primary" type="button" id="nm-start">Descubre cómo respondes tú</button>
+    </div>`;
+  root.querySelector('#nm-start').addEventListener('click', onStart);
+}
+
+export function renderScene(root, { scene, index, total, onAnswer }) {
+  const dots = Array.from({ length: total }, (_, i) =>
+    `<span class="${i <= index ? 'is-done' : ''}"></span>`,
+  ).join('');
+  const options = scene.options
+    .map(
+      (o) => `
+      <button class="nm-option" type="button" data-style="${o.style}">
+        <span class="nm-style ${o.style}">● ${styleLabel[o.style]}</span>
+        <span class="nm-text">${o.text}</span>
+      </button>`,
+    )
+    .join('');
+  root.innerHTML = `
+    <div class="nm-brand"><i class="ti ti-asterisk" aria-hidden="true"></i> Nunca Madres
+      <span style="margin-left:auto;font-size:12px;color:var(--nm-muted)">${index + 1} / ${total}</span>
+    </div>
+    <div class="nm-progress">${dots}</div>
+    <div class="nm-chip"><i class="ti ${scene.icon}" aria-hidden="true"></i> ${scene.faceta}</div>
+    <div class="nm-bubble">
+      <div class="nm-avatar">${scene.speakerInitials}</div>
+      <div class="nm-bubble-body">
+        <p class="nm-speaker">${scene.speaker}</p>
+        <p class="nm-question">${scene.question}</p>
+      </div>
+    </div>
+    <p style="margin:0 0 8px;font-size:13px;color:var(--nm-muted)">¿Cómo respondes?</p>
+    <div class="nm-options">${options}</div>`;
+  root.querySelectorAll('.nm-option').forEach((btn) => {
+    btn.addEventListener('click', () => onAnswer(btn.dataset.style));
+  });
+}
+
+export function buildResultCardHtml(result) {
+  const a = archetypes[result.primary];
+  const toque = result.secondary
+    ? `<p class="nm-tagline">con un toque de ${archetypes[result.secondary].name.replace('La ', '')}</p>`
+    : '';
+  return `
+    <div class="nm-card" id="nm-card" style="background:${a.bg}">
+      <i class="ti ti-asterisk nm-confetti" style="top:14px;left:16px;font-size:16px" aria-hidden="true"></i>
+      <i class="ti ti-asterisk nm-confetti" style="top:40px;right:20px;font-size:22px" aria-hidden="true"></i>
+      <i class="ti ti-asterisk nm-confetti" style="bottom:18px;left:18px;font-size:14px" aria-hidden="true"></i>
+      <p class="nm-kicker">Tu resultado</p>
+      <div class="nm-badge"><i class="ti ${a.icon}" aria-hidden="true"></i></div>
+      <p class="nm-name">${a.name}</p>
+      <p class="nm-tagline">${a.tagline}</p>
+      ${toque}
+      <p class="nm-desc">${a.description}</p>
+      <p class="nm-closing">"${CLOSING_LINE}"</p>
+    </div>`;
+}
+
+export function renderResult(root, { result, onShare, onCta, onReplay }) {
+  root.innerHTML = `
+    <h2 class="sr-only">Tu estilo para responder es ${archetypes[result.primary].name}</h2>
+    ${buildResultCardHtml(result)}
+    <div class="nm-result-actions">
+      <a class="nm-cta-primary" id="nm-cta" href="${CTA_URL}" target="_blank" rel="noopener"
+         style="background:var(--nm-purple)">Únete al Círculo Nunca Madres <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+      <div class="nm-share-row">
+        <button type="button" data-channel="whatsapp" aria-label="Compartir por WhatsApp"><i class="ti ti-brand-whatsapp"></i></button>
+        <button type="button" data-channel="instagram" aria-label="Compartir en Instagram"><i class="ti ti-brand-instagram"></i></button>
+        <button type="button" data-channel="copy" aria-label="Copiar liga"><i class="ti ti-link"></i></button>
+      </div>
+      <button class="nm-replay" type="button" id="nm-replay">Volver a jugar</button>
+    </div>`;
+  root.querySelectorAll('.nm-share-row button').forEach((btn) => {
+    btn.addEventListener('click', () => onShare(btn.dataset.channel, result));
+  });
+  root.querySelector('#nm-cta').addEventListener('click', onCta);
+  root.querySelector('#nm-replay').addEventListener('click', onReplay);
+}
