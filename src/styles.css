@@ -57,8 +57,8 @@ body {
   justify-content: center; font-size: 12px; font-weight: 500;
 }
 .nm-bubble-body { background: #f1efe8; border-radius: 16px; border-top-left-radius: 3px; padding: 11px 13px; }
-.nm-bubble-body .nm-speaker { margin: 0 0 3px; font-size: 11px; color: var(--nm-muted); }
-.nm-bubble-body .nm-question { margin: 0; font-size: 16px; line-height: 1.4; }
+.nm-bubble-body .nm-speaker { margin: 0 0 4px; font-size: 14px; font-weight: 500; color: #72243e; }
+.nm-bubble-body .nm-question { margin: 0; font-size: 19px; font-weight: 500; line-height: 1.35; color: var(--nm-ink); }
 
 .nm-options { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
 .nm-option {
