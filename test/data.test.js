@@ -34,3 +34,31 @@ describe('scenes data', () => {
     }
   });
 });
+
+import { archetypes, PRIORITY, CLOSING_LINE, CTA_URL } from '../src/data/archetypes.js';
+import { STYLES as STYLE_KEYS } from '../src/data/scenes.js';
+
+describe('archetypes data', () => {
+  it('has one archetype per style', () => {
+    expect(Object.keys(archetypes).sort()).toEqual([...STYLE_KEYS].sort());
+  });
+
+  it('PRIORITY lists all 4 styles with Zen first and Directa last', () => {
+    expect(PRIORITY).toEqual(['zen', 'diplomatica', 'sarcastica', 'directa']);
+  });
+
+  it('each archetype has the required display fields', () => {
+    for (const key of STYLE_KEYS) {
+      const a = archetypes[key];
+      for (const f of ['name', 'tagline', 'icon', 'color', 'bg', 'description']) {
+        expect(typeof a[f]).toBe('string');
+        expect(a[f].length).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it('exposes the warm closing line and the Círculo CTA url', () => {
+    expect(CLOSING_LINE.length).toBeGreaterThan(0);
+    expect(CTA_URL).toBe('https://nunca-madres.mykajabi.com/circulo-nunca-madres');
+  });
+});
