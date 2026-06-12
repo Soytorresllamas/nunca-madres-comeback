@@ -47,10 +47,10 @@ body {
 .nm-chip {
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--nm-pink-soft); color: #72243e;
-  font-size: 16px; font-weight: 500; padding: 10px 18px; border-radius: 999px; align-self: flex-start;
+  font-size: 16px; font-weight: 500; padding: 10px 18px; border-radius: 999px; align-self: center;
 }
 
-.nm-bubble { display: flex; align-items: flex-start; gap: 10px; margin: 18px 0; }
+.nm-bubble { display: flex; align-items: center; gap: 10px; margin: 18px 0; }
 .nm-avatar {
   width: 36px; height: 36px; flex-shrink: 0; border-radius: 50%;
   background: #f4c0d1; color: #72243e; display: flex; align-items: center;
