@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<style>
+  :root{
+    --pink:#ff2e88; --pink-soft:#fbeaf0; --purple:#534ab7; --purple-deep:#26215c;
+    --wine:#72243e; --ink:#2c2c2a; --muted:#6b6a64; --beige:#f3f1ec; --lav:#eeedfe;
+    --font:"Helvetica Neue",Arial,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#e7e5de;font-family:var(--font);padding:40px;display:flex;gap:36px;justify-content:center;align-items:flex-start;}
+  .col{display:flex;flex-direction:column;align-items:center;gap:12px;}
+  .label{font-size:13px;color:#555;font-style:italic;}
+  .phone{
+    width:340px;height:720px;background:var(--beige);border-radius:38px;
+    border:1px solid rgba(0,0,0,.12);overflow:hidden;position:relative;
+    display:flex;flex-direction:column;
+  }
+  .logo{display:block;height:auto;}
+  .cta{display:block;width:100%;text-align:center;border:none;cursor:pointer;
+    font-weight:600;font-size:17px;padding:16px;border-radius:15px;font-family:inherit;}
+  .cta-pink{background:var(--pink);color:#fff;}
+  .cta-purple{background:var(--purple);color:#fff;}
+  .meta{font-size:13px;color:var(--muted);letter-spacing:.02em;}
+
+  /* ---------- A: preguntas flotando ---------- */
+  .a{padding:38px 26px;justify-content:space-between;text-align:center;}
+  .a .float{position:absolute;font-weight:600;white-space:nowrap;pointer-events:none;}
+  .a .center{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:18px;}
+  .a h1{font-size:27px;line-height:1.12;font-weight:800;letter-spacing:-.02em;color:var(--ink);}
+  .a p{font-size:15px;line-height:1.5;color:var(--muted);max-width:240px;}
+  .a .pill{display:inline-flex;align-items:center;gap:7px;background:var(--pink-soft);
+    color:var(--wine);font-size:13px;font-weight:500;padding:7px 14px;border-radius:999px;}
+
+  /* ---------- B: editorial ---------- */
+  .b{padding:34px 28px;justify-content:space-between;}
+  .b .top{display:flex;align-items:center;justify-content:space-between;}
+  .b .hero{margin-top:auto;margin-bottom:auto;}
+  .b h1{font-size:46px;line-height:1.0;font-weight:800;letter-spacing:-.035em;color:var(--ink);}
+  .b h1 .hot{color:var(--pink);}
+  .b .rule{width:46px;height:4px;background:var(--pink);border-radius:4px;margin:22px 0 16px;}
+  .b p{font-size:16px;line-height:1.45;color:var(--muted);max-width:250px;}
+  .b .foot{display:flex;flex-direction:column;gap:12px;}
+
+  /* ---------- C: sticker / IG ---------- */
+  .c{padding:32px 26px;justify-content:space-between;align-items:center;text-align:center;background:var(--lav);}
+  .c .ast{position:absolute;color:#c9c4f2;font-weight:700;pointer-events:none;}
+  .c .bubble{position:relative;z-index:2;background:var(--pink);color:#fff;border-radius:26px;
+    padding:24px 22px;font-size:26px;line-height:1.18;font-weight:800;letter-spacing:-.02em;max-width:280px;
+    box-shadow:0 10px 0 rgba(255,46,136,.18);}
+  .c .bubble:after{content:"";position:absolute;left:38px;bottom:-14px;border:9px solid transparent;
+    border-top-color:var(--pink);border-bottom:0;}
+  .c .sub{position:relative;z-index:2;font-size:16px;line-height:1.45;color:var(--purple-deep);font-weight:500;max-width:250px;}
+  .c .foot{position:relative;z-index:2;display:flex;flex-direction:column;gap:10px;width:100%;align-items:center;}
+</style>
+</head>
+<body>
+  <script>
+    const LOGO = "http://localhost:5174/logo-nunca-madres-negro.avif";
+  </script>
+
+  <!-- A -->
+  <div class="col">
+    <div class="label">A · Preguntas necias flotando (juguetona)</div>
+    <div class="phone a">
+      <span class="float" style="top:70px;left:18px;transform:rotate(-7deg);font-size:15px;color:rgba(114,36,62,.5)">¿y el reloj biológico?</span>
+      <span class="float" style="top:120px;right:14px;transform:rotate(6deg);font-size:17px;color:rgba(255,46,136,.45)">te vas a arrepentir…</span>
+      <span class="float" style="top:188px;left:26px;transform:rotate(4deg);font-size:13px;color:rgba(114,36,62,.4)">ya se te va el tren</span>
+      <span class="float" style="bottom:150px;right:20px;transform:rotate(-5deg);font-size:14px;color:rgba(255,46,136,.4)">¿no te sientes vacía?</span>
+      <span class="float" style="bottom:96px;left:16px;transform:rotate(7deg);font-size:15px;color:rgba(114,36,62,.45)">¿y quién te cuida?</span>
+      <div></div>
+      <div class="center">
+        <img class="logo" id="la" style="width:206px" />
+        <h1>¿Y los hijos<br>pa' cuándo?</h1>
+        <p>Descubre tu estilo para responder las preguntas necias.</p>
+        <span class="pill">✳ 6 escenas · 90 segundos</span>
+      </div>
+      <button class="cta cta-pink">Jugar</button>
+    </div>
+  </div>
+
+  <!-- B -->
+  <div class="col">
+    <div class="label">B · Editorial tipográfica (sofisticada)</div>
+    <div class="phone b">
+      <div class="top">
+        <img class="logo" id="lb" style="width:128px" />
+        <span class="meta">90 seg</span>
+      </div>
+      <div class="hero">
+        <h1>¿Y los hijos <span class="hot">pa'&nbsp;cuándo?</span></h1>
+        <div class="rule"></div>
+        <p>La pregunta necia de siempre. Descubre cómo respondes tú en 6 escenas.</p>
+      </div>
+      <div class="foot">
+        <span class="meta">6 escenas · sin filtro</span>
+        <button class="cta cta-pink">Descubre cómo respondes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- C -->
+  <div class="col">
+    <div class="label">C · Sticker / cercana a su IG (cálida)</div>
+    <div class="phone c">
+      <span class="ast" style="top:64px;left:26px;font-size:22px">✳</span>
+      <span class="ast" style="top:150px;right:30px;font-size:30px;color:#b7afe8">✳</span>
+      <span class="ast" style="bottom:210px;left:30px;font-size:18px">✳</span>
+      <img class="logo" id="lc" style="width:130px;margin-top:6px" />
+      <div class="bubble">¿Y los hijos pa' cuándo?</div>
+      <p class="sub">Spoiler: tú decides. Y tienes mil formas de contestar.</p>
+      <div class="foot">
+        <span class="meta">Descúbrelo en 6 escenas</span>
+        <button class="cta cta-purple">Empezar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('la').src = LOGO;
+    document.getElementById('lb').src = LOGO;
+    document.getElementById('lc').src = LOGO;
+  </script>
+</body>
+</html>
