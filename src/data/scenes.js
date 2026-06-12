@@ -1,0 +1,88 @@
+export const STYLES = ['zen', 'sarcastica', 'diplomatica', 'directa'];
+
+export const scenes = [
+  {
+    id: 'comida-familiar',
+    faceta: 'Comida familiar',
+    icon: 'ti-users',
+    speaker: 'Mamá',
+    speakerInitials: 'MA',
+    question: "¿Y los hijos pa' cuándo? No te esperes tanto…",
+    options: [
+      { style: 'zen', text: 'Estoy justo donde quiero estar, ma. En paz.' },
+      { style: 'sarcastica', text: 'Los dejé en el otro pantalón.' },
+      { style: 'diplomatica', text: 'Sé que lo dices con cariño, pero ese tema lo llevo yo.' },
+      { style: 'directa', text: 'No va a haber. Y estoy feliz así.' },
+    ],
+  },
+  {
+    id: 'junta-trabajo',
+    faceta: 'Junta de trabajo',
+    icon: 'ti-briefcase',
+    speaker: 'RH',
+    speakerInitials: 'RH',
+    question: '¿Tienes planes de familia pronto?',
+    options: [
+      { style: 'zen', text: 'Mi plan es este proyecto. Sigamos.' },
+      { style: 'sarcastica', text: '¿Eso entra en el organigrama?' },
+      { style: 'diplomatica', text: 'Prefiero mantener lo personal fuera de la junta, ¿te parece?' },
+      { style: 'directa', text: 'No, y esa pregunta ni debería estar en una entrevista.' },
+    ],
+  },
+  {
+    id: 'consulta-medica',
+    faceta: 'Consulta médica',
+    icon: 'ti-stethoscope',
+    speaker: 'Doctor',
+    speakerInitials: 'DR',
+    question: 'A tu edad ya deberías congelar óvulos, por si te arrepientes.',
+    options: [
+      { style: 'zen', text: 'Gracias, pero no me arrepiento de algo que sí decidí.' },
+      { style: 'sarcastica', text: '¿Y usted ya congeló sus opiniones, doc?' },
+      { style: 'diplomatica', text: 'Le agradezco el dato; si lo necesito, se lo pido.' },
+      { style: 'directa', text: 'Vine por mi garganta, no por mi útero.' },
+    ],
+  },
+  {
+    id: 'boda-amiga',
+    faceta: 'Boda de la amiga',
+    icon: 'ti-confetti',
+    speaker: 'Tía',
+    speakerInitials: 'TÍ',
+    question: "Tú sigues… ¿pa' cuándo la tuya y los bebés?",
+    options: [
+      { style: 'zen', text: 'Yo ya estoy completa, tía. Salud.' },
+      { style: 'sarcastica', text: 'Primero el ramo, luego vemos.' },
+      { style: 'diplomatica', text: 'Cada quien su ritmo, y el mío me encanta.' },
+      { style: 'directa', text: 'Ni boda ni bebés. Vine a bailar.' },
+    ],
+  },
+  {
+    id: 'brunch-amigas',
+    faceta: 'Brunch con amigas',
+    icon: 'ti-coffee',
+    speaker: 'Amiga',
+    speakerInitials: 'AM',
+    question: 'No sabes lo que es el amor de verdad hasta que eres mamá.',
+    options: [
+      { style: 'zen', text: 'El amor tiene mil formas, y yo vivo la mía plena.' },
+      { style: 'sarcastica', text: 'Dile eso a mi perro, se va a ofender.' },
+      { style: 'diplomatica', text: 'Me alegra que tú lo sientas así; yo también soy feliz.' },
+      { style: 'directa', text: 'Amo de sobra. Solo que no es a un hijo.' },
+    ],
+  },
+  {
+    id: 'sobremesa-suegros',
+    faceta: 'Sobremesa',
+    icon: 'ti-armchair',
+    speaker: 'Suegros',
+    speakerInitials: 'SU',
+    question: '¿Y quién te va a cuidar de viejita?',
+    options: [
+      { style: 'zen', text: 'Estoy construyendo una vejez que ya planeé, con calma.' },
+      { style: 'sarcastica', text: 'Con lo que me ahorré en pañales, una enfermera de lujo.' },
+      { style: 'diplomatica', text: 'Tener hijos no es un seguro de vejez, pero gracias por la preocupación.' },
+      { style: 'directa', text: 'Yo. Llevo años cuidándome sola.' },
+    ],
+  },
+];
