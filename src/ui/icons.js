@@ -14,6 +14,18 @@ const PATHS = {
     '<rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="16.8" cy="7.2" r="1.1" fill="currentColor" stroke="none"/>',
   link:
     '<path d="M10.5 13.5a4 4 0 0 0 5.7 0l2.3-2.3a4 4 0 0 0-5.7-5.7l-1.3 1.3"/><path d="M13.5 10.5a4 4 0 0 0-5.7 0l-2.3 2.3a4 4 0 0 0 5.7 5.7l1.3-1.3"/>',
+  home:
+    '<path d="M3 11l9-7 9 7"/><path d="M5 10v9h14v-9"/><path d="M10 19v-5h4v5"/>',
+  briefcase:
+    '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="3" y1="12.5" x2="21" y2="12.5"/>',
+  medical:
+    '<rect x="3" y="4" width="18" height="16" rx="3"/><line x1="12" y1="9" x2="12" y2="15"/><line x1="9" y1="12" x2="15" y2="12"/>',
+  rings:
+    '<circle cx="9.5" cy="13.5" r="5"/><circle cx="14.5" cy="13.5" r="5"/>',
+  coffee:
+    '<path d="M4 8h13v5a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M17 9h1.5a2.5 2.5 0 0 1 0 5H17"/><line x1="7" y1="2.5" x2="7" y2="4.5"/><line x1="11" y1="2.5" x2="11" y2="4.5"/>',
+  armchair:
+    '<rect x="4" y="10" width="16" height="7" rx="2"/><path d="M6 10V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/><line x1="6.5" y1="17" x2="6.5" y2="19.5"/><line x1="17.5" y1="17" x2="17.5" y2="19.5"/>',
 };
 
 export function icon(name, { size = 20, cls = '', style = '' } = {}) {

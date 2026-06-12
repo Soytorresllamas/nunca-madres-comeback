@@ -32,7 +32,13 @@ body {
 .nm-icon { display: inline-block; vertical-align: middle; }
 .nm-ast { color: var(--nm-pink); }
 
-.nm-brand { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; }
+.nm-topbar { display: flex; align-items: center; gap: 8px; min-height: 26px; }
+.nm-topbar--center { justify-content: center; }
+.nm-count { margin-left: auto; font-size: 12px; color: var(--nm-muted); }
+
+.nm-logo { display: block; height: auto; }
+.nm-logo--sm { height: 22px; }
+.nm-logo--lg { width: 78%; max-width: 300px; }
 
 .nm-progress { display: flex; gap: 4px; margin: 14px 0 18px; }
 .nm-progress span { height: 4px; border-radius: 4px; background: var(--nm-pink-soft); flex: 1; }
@@ -62,12 +68,7 @@ body {
 }
 .nm-option:hover { border-color: var(--nm-purple); }
 .nm-option:active { transform: scale(0.99); }
-.nm-option .nm-style { display: block; font-size: 11px; margin-bottom: 4px; }
-.nm-option .nm-text { font-size: 15px; line-height: 1.35; }
-.nm-style.zen { color: #534ab7; }
-.nm-style.sarcastica { color: #d4537e; }
-.nm-style.diplomatica { color: #d85a30; }
-.nm-style.directa { color: #993c1d; }
+.nm-option .nm-text { font-size: 15px; line-height: 1.4; }
 
 .nm-cta-primary {
   display: block; text-align: center; text-decoration: none;
@@ -78,6 +79,10 @@ body {
 .nm-intro { display: flex; flex-direction: column; gap: 18px; margin-top: 8px; }
 .nm-intro h1 { font-size: 26px; line-height: 1.2; margin: 8px 0; }
 .nm-intro p { margin: 0; color: var(--nm-muted); font-size: 15px; line-height: 1.5; }
+
+.nm-cover { align-items: center; text-align: center; margin-top: 32px; gap: 22px; }
+.nm-cover .nm-logo--lg { margin-bottom: 4px; }
+.nm-cover h1 { font-size: 28px; }
 
 .nm-card {
   position: relative; overflow: hidden; border-radius: 22px;

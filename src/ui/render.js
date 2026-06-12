@@ -1,17 +1,12 @@
 import { archetypes, CLOSING_LINE, CTA_URL } from '../data/archetypes.js';
 import { icon } from './icons.js';
 
-const styleLabel = {
-  zen: 'Zen',
-  sarcastica: 'Sarcástica',
-  diplomatica: 'Diplomática',
-  directa: 'Directa',
-};
+const LOGO_SRC = './logo-nunca-madres-negro.avif';
 
 export function renderIntro(root, { onStart }) {
   root.innerHTML = `
-    <div class="nm-brand">${icon('asterisk', { size: 20, cls: 'nm-ast' })} Nunca Madres</div>
-    <div class="nm-intro">
+    <div class="nm-intro nm-cover">
+      <img class="nm-logo nm-logo--lg" src="${LOGO_SRC}" alt="Nunca Madres" />
       <h1>¿Y los hijos pa' cuándo?</h1>
       <p>Todas hemos oído la pregunta necia. Descubre cómo respondes tú en 6 escenas.</p>
       <button class="nm-cta-primary" type="button" id="nm-start">Descubre cómo respondes tú</button>
@@ -27,19 +22,19 @@ export function renderScene(root, { scene, index, total, onAnswer }) {
     .map(
       (o) => `
       <button class="nm-option" type="button" data-style="${o.style}">
-        <span class="nm-style ${o.style}">● ${styleLabel[o.style]}</span>
         <span class="nm-text">${o.text}</span>
       </button>`,
     )
     .join('');
   root.innerHTML = `
-    <div class="nm-brand">${icon('asterisk', { size: 20, cls: 'nm-ast' })} Nunca Madres
-      <span style="margin-left:auto;font-size:12px;color:var(--nm-muted)">${index + 1} / ${total}</span>
+    <div class="nm-topbar">
+      <img class="nm-logo nm-logo--sm" src="${LOGO_SRC}" alt="Nunca Madres" />
+      <span class="nm-count">${index + 1} / ${total}</span>
     </div>
     <div class="nm-progress">${dots}</div>
     <div class="nm-chip">${icon('asterisk', { size: 14, cls: 'nm-ast' })} ${scene.faceta}</div>
     <div class="nm-bubble">
-      <div class="nm-avatar">${scene.speakerInitials}</div>
+      <div class="nm-avatar">${icon(scene.icon, { size: 20 })}</div>
       <div class="nm-bubble-body">
         <p class="nm-speaker">${scene.speaker}</p>
         <p class="nm-question">${scene.question}</p>
@@ -74,6 +69,9 @@ export function buildResultCardHtml(result) {
 
 export function renderResult(root, { result, onShare, onCta, onReplay }) {
   root.innerHTML = `
+    <div class="nm-topbar nm-topbar--center">
+      <img class="nm-logo nm-logo--sm" src="${LOGO_SRC}" alt="Nunca Madres" />
+    </div>
     <h2 class="sr-only">Tu estilo para responder es ${archetypes[result.primary].name}</h2>
     ${buildResultCardHtml(result)}
     <div class="nm-result-actions">

@@ -4,7 +4,7 @@ export const scenes = [
   {
     id: 'comida-familiar',
     faceta: 'Comida familiar',
-    icon: 'ti-users',
+    icon: 'home',
     speaker: 'Mamá',
     speakerInitials: 'MA',
     question: "¿Y los hijos pa' cuándo? No te esperes tanto…",
@@ -18,7 +18,7 @@ export const scenes = [
   {
     id: 'junta-trabajo',
     faceta: 'Junta de trabajo',
-    icon: 'ti-briefcase',
+    icon: 'briefcase',
     speaker: 'RH',
     speakerInitials: 'RH',
     question: '¿Tienes planes de familia pronto?',
@@ -32,7 +32,7 @@ export const scenes = [
   {
     id: 'consulta-medica',
     faceta: 'Consulta médica',
-    icon: 'ti-stethoscope',
+    icon: 'medical',
     speaker: 'Doctor',
     speakerInitials: 'DR',
     question: 'A tu edad ya deberías congelar óvulos, por si te arrepientes.',
@@ -46,7 +46,7 @@ export const scenes = [
   {
     id: 'boda-amiga',
     faceta: 'Boda de la amiga',
-    icon: 'ti-confetti',
+    icon: 'rings',
     speaker: 'Tía',
     speakerInitials: 'TÍ',
     question: "Tú sigues… ¿pa' cuándo la tuya y los bebés?",
@@ -60,7 +60,7 @@ export const scenes = [
   {
     id: 'brunch-amigas',
     faceta: 'Brunch con amigas',
-    icon: 'ti-coffee',
+    icon: 'coffee',
     speaker: 'Amiga',
     speakerInitials: 'AM',
     question: 'No sabes lo que es el amor de verdad hasta que eres mamá.',
@@ -74,7 +74,7 @@ export const scenes = [
   {
     id: 'sobremesa-suegros',
     faceta: 'Sobremesa',
-    icon: 'ti-armchair',
+    icon: 'armchair',
     speaker: 'Suegros',
     speakerInitials: 'SU',
     question: '¿Y quién te va a cuidar de viejita?',
