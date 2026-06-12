@@ -1,0 +1,104 @@
+:root {
+  --nm-pink: #ff2e88;
+  --nm-pink-soft: #fbeaf0;
+  --nm-purple: #534ab7;
+  --nm-purple-deep: #26215c;
+  --nm-lavender: #eeedfe;
+  --nm-ink: #2c2c2a;
+  --nm-muted: #5f5e5a;
+  --nm-line: rgba(0, 0, 0, 0.14);
+  --nm-radius: 14px;
+  --nm-font: "Helvetica Neue", Arial, system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--nm-font);
+  background: #f3f1ec;
+  color: var(--nm-ink);
+}
+
+#app {
+  max-width: 420px;
+  margin: 0 auto;
+  min-height: 100dvh;
+  padding: 20px 16px 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.nm-brand { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; }
+.nm-brand .ti-asterisk { color: var(--nm-pink); font-size: 20px; }
+
+.nm-progress { display: flex; gap: 4px; margin: 14px 0 18px; }
+.nm-progress span { height: 4px; border-radius: 4px; background: var(--nm-pink-soft); flex: 1; }
+.nm-progress span.is-done { background: var(--nm-pink); }
+
+.nm-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--nm-pink-soft); color: #72243e;
+  font-size: 13px; padding: 5px 12px; border-radius: 10px; align-self: flex-start;
+}
+
+.nm-bubble { display: flex; align-items: flex-start; gap: 10px; margin: 18px 0; }
+.nm-avatar {
+  width: 36px; height: 36px; flex-shrink: 0; border-radius: 50%;
+  background: #f4c0d1; color: #72243e; display: flex; align-items: center;
+  justify-content: center; font-size: 12px; font-weight: 500;
+}
+.nm-bubble-body { background: #f1efe8; border-radius: 16px; border-top-left-radius: 3px; padding: 11px 13px; }
+.nm-bubble-body .nm-speaker { margin: 0 0 3px; font-size: 11px; color: var(--nm-muted); }
+.nm-bubble-body .nm-question { margin: 0; font-size: 16px; line-height: 1.4; }
+
+.nm-options { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+.nm-option {
+  text-align: left; background: #fff; border: 1px solid var(--nm-line);
+  border-radius: var(--nm-radius); padding: 12px 14px; font: inherit; cursor: pointer;
+  transition: border-color 0.15s, transform 0.05s;
+}
+.nm-option:hover { border-color: var(--nm-purple); }
+.nm-option:active { transform: scale(0.99); }
+.nm-option .nm-style { display: block; font-size: 11px; margin-bottom: 4px; }
+.nm-option .nm-text { font-size: 15px; line-height: 1.35; }
+.nm-style.zen { color: #534ab7; }
+.nm-style.sarcastica { color: #d4537e; }
+.nm-style.diplomatica { color: #d85a30; }
+.nm-style.directa { color: #993c1d; }
+
+.nm-cta-primary {
+  display: block; text-align: center; text-decoration: none;
+  background: var(--nm-pink); color: #fff; font-weight: 500; font-size: 16px;
+  padding: 14px; border-radius: var(--nm-radius); border: none; cursor: pointer; width: 100%;
+}
+
+.nm-intro { display: flex; flex-direction: column; gap: 18px; margin-top: 8px; }
+.nm-intro h1 { font-size: 26px; line-height: 1.2; margin: 8px 0; }
+.nm-intro p { margin: 0; color: var(--nm-muted); font-size: 15px; line-height: 1.5; }
+
+.nm-card {
+  position: relative; overflow: hidden; border-radius: 22px;
+  padding: 26px 20px 20px; text-align: center; background: var(--nm-lavender);
+}
+.nm-card .nm-confetti { position: absolute; color: #afa9ec; }
+.nm-card .nm-kicker { margin: 0 0 12px; font-size: 12px; letter-spacing: 0.5px; color: var(--nm-purple); }
+.nm-card .nm-badge {
+  width: 72px; height: 72px; margin: 0 auto 14px; border-radius: 50%;
+  background: #cecbf6; display: flex; align-items: center; justify-content: center;
+}
+.nm-card .nm-badge .ti { font-size: 36px; color: #3c3489; }
+.nm-card .nm-name { margin: 0; font-size: 26px; font-weight: 500; color: var(--nm-purple-deep); }
+.nm-card .nm-tagline { margin: 3px 0 16px; font-size: 14px; color: var(--nm-purple); }
+.nm-card .nm-desc { margin: 0 0 16px; font-size: 14px; line-height: 1.5; color: #3c3489; }
+.nm-card .nm-closing { margin: 0; font-style: italic; font-size: 14px; line-height: 1.5; color: var(--nm-purple-deep); }
+
+.nm-result-actions { margin-top: 18px; display: flex; flex-direction: column; gap: 12px; }
+.nm-share-row { display: flex; align-items: center; justify-content: center; gap: 20px; color: var(--nm-purple); }
+.nm-share-row button { background: none; border: none; color: inherit; cursor: pointer; font-size: 22px; }
+.nm-replay { background: none; border: none; color: var(--nm-muted); font-size: 14px; cursor: pointer; text-decoration: underline; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
