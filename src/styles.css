@@ -45,9 +45,9 @@ body {
 .nm-progress span.is-done { background: var(--nm-pink); }
 
 .nm-chip {
-  display: inline-flex; align-items: center; gap: 6px;
+  display: inline-flex; align-items: center; gap: 8px;
   background: var(--nm-pink-soft); color: #72243e;
-  font-size: 13px; padding: 5px 12px; border-radius: 10px; align-self: flex-start;
+  font-size: 16px; font-weight: 500; padding: 10px 18px; border-radius: 999px; align-self: flex-start;
 }
 
 .nm-bubble { display: flex; align-items: flex-start; gap: 10px; margin: 18px 0; }

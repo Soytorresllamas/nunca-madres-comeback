@@ -32,7 +32,7 @@ export function renderScene(root, { scene, index, total, onAnswer }) {
       <span class="nm-count">${index + 1} / ${total}</span>
     </div>
     <div class="nm-progress">${dots}</div>
-    <div class="nm-chip">${icon('asterisk', { size: 14, cls: 'nm-ast' })} ${scene.faceta}</div>
+    <div class="nm-chip">${icon('asterisk', { size: 18, cls: 'nm-ast' })} ${scene.faceta}</div>
     <div class="nm-bubble">
       <div class="nm-avatar">${icon(scene.icon, { size: 20 })}</div>
       <div class="nm-bubble-body">
