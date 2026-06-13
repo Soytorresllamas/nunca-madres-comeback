@@ -84,9 +84,9 @@ export function buildResultCardHtml(result) {
     : '';
   return `
     <div class="nm-card" id="nm-card" style="background:${a.bg}">
-      ${icon('asterisk', { size: 18, cls: 'nm-confetti', style: 'top:14px;left:16px' })}
-      ${icon('asterisk', { size: 24, cls: 'nm-confetti', style: 'top:40px;right:20px' })}
-      ${icon('asterisk', { size: 15, cls: 'nm-confetti', style: 'bottom:18px;left:18px' })}
+      <div class="nm-confetti" style="top:14px;left:16px">${icon('asterisk', { size: 18 })}</div>
+      <div class="nm-confetti" style="top:40px;right:20px">${icon('asterisk', { size: 24 })}</div>
+      <div class="nm-confetti" style="bottom:18px;left:18px">${icon('asterisk', { size: 15 })}</div>
       <p class="nm-kicker">Tu resultado</p>
       <div class="nm-badge">${icon(a.icon, { size: 34, cls: 'nm-badge-icon' })}</div>
       <p class="nm-name">${a.name}</p>
