@@ -9,7 +9,7 @@ import { track, EVENTS, initAnalytics } from './analytics.js';
 
 // Pega aquí el ID de GA4 (formato G-XXXXXXXXXX) para activar la medición.
 // Vacío = no envía nada (los eventos siguen yendo a dataLayer para GTM).
-const GA4_MEASUREMENT_ID = '';
+const GA4_MEASUREMENT_ID = 'G-VB8SCYWBNK';
 initAnalytics(GA4_MEASUREMENT_ID);
 
 const root = document.getElementById('app');
