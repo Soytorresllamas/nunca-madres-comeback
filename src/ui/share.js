@@ -25,18 +25,31 @@ function downloadFile(file) {
 export async function shareResult(channel, cardNode) {
   track(EVENTS.RESULT_SHARED, { channel });
 
+  if (channel === 'copy') {
+    // Copy only the quiz's own link (so whoever gets it lands on the game).
+    // No image download here.
+    const quizUrl = window.location.origin + window.location.pathname;
+    try {
+      await navigator.clipboard.writeText(quizUrl);
+    } catch (e) {
+      const ta = document.createElement('textarea');
+      ta.value = quizUrl;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+      } catch (_) {
+        // ignore
+      }
+      document.body.removeChild(ta);
+    }
+    return 'copied';
+  }
+
   const file = await buildCardFile(cardNode);
   const canShareFiles = !!(navigator.canShare && navigator.canShare({ files: [file] }));
-
-  if (channel === 'copy') {
-    try {
-      await navigator.clipboard.writeText(SHARE_MSG);
-    } catch (e) {
-      // clipboard may be blocked; the download below is the fallback
-    }
-    downloadFile(file);
-    return 'copied+card';
-  }
 
   if (channel === 'whatsapp') {
     if (canShareFiles) {
