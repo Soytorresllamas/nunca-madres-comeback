@@ -1,9 +1,13 @@
-import { CTA_URL } from '../data/archetypes.js';
 import { rasterizeToPng } from './shareCard.js';
 import { track, EVENTS } from '../analytics.js';
 
 const SHARE_TEXT = 'Hice el test de Nunca Madres y este es mi estilo para responder las preguntas necias 💜';
-const SHARE_MSG = `${SHARE_TEXT} ${CTA_URL}`;
+
+// The quiz's own URL — everything we share points back to the game so it
+// keeps spreading. Adapts automatically to wherever it is deployed.
+function quizUrl() {
+  return window.location.origin + window.location.pathname;
+}
 
 async function buildCardFile(cardNode) {
   const blob = await rasterizeToPng(cardNode);
@@ -18,57 +22,62 @@ function downloadFile(file) {
   URL.revokeObjectURL(link.href);
 }
 
-// Every channel now carries the result card image. Instagram and WhatsApp
-// attach it through the Web Share API (native sheet on mobile); the copy
-// button keeps the link in the clipboard and downloads the card so it can
-// be pasted/attached. Desktop falls back to a download in all cases.
+function copyText(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    return navigator.clipboard.writeText(text).catch(() => fallbackCopy(text));
+  }
+  fallbackCopy(text);
+  return Promise.resolve();
+}
+
+function fallbackCopy(text) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try {
+    document.execCommand('copy');
+  } catch (_) {
+    // ignore
+  }
+  document.body.removeChild(ta);
+}
+
 export async function shareResult(channel, cardNode) {
   track(EVENTS.RESULT_SHARED, { channel });
 
+  const url = quizUrl();
+
   if (channel === 'copy') {
-    // Copy only the quiz's own link (so whoever gets it lands on the game).
-    // No image download here.
-    const quizUrl = window.location.origin + window.location.pathname;
-    try {
-      await navigator.clipboard.writeText(quizUrl);
-    } catch (e) {
-      const ta = document.createElement('textarea');
-      ta.value = quizUrl;
-      ta.style.position = 'fixed';
-      ta.style.opacity = '0';
-      document.body.appendChild(ta);
-      ta.select();
-      try {
-        document.execCommand('copy');
-      } catch (_) {
-        // ignore
-      }
-      document.body.removeChild(ta);
-    }
+    // Copy only the quiz link (no image download).
+    await copyText(url);
     return 'copied';
   }
 
+  const message = `${SHARE_TEXT} ${url}`;
   const file = await buildCardFile(cardNode);
   const canShareFiles = !!(navigator.canShare && navigator.canShare({ files: [file] }));
 
   if (channel === 'whatsapp') {
     if (canShareFiles) {
       try {
-        await navigator.share({ files: [file], text: SHARE_MSG });
+        await navigator.share({ files: [file], text: message });
         return 'shared';
       } catch (e) {
         if (e && e.name === 'AbortError') return 'cancelled';
       }
     }
     downloadFile(file);
-    window.open(`https://wa.me/?text=${encodeURIComponent(SHARE_MSG)}`, '_blank', 'noopener');
+    window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
     return 'downloaded+opened';
   }
 
   // instagram / default
   if (canShareFiles) {
     try {
-      await navigator.share({ files: [file], text: SHARE_MSG });
+      await navigator.share({ files: [file], text: message });
       return 'shared';
     } catch (e) {
       if (e && e.name === 'AbortError') return 'cancelled';
