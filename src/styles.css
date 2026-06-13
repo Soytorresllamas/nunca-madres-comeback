@@ -123,7 +123,7 @@ body {
   position: relative; overflow: hidden; border-radius: 22px;
   padding: 26px 20px 20px; text-align: center; background: var(--nm-lavender);
 }
-.nm-card .nm-confetti { position: absolute; color: #afa9ec; }
+.nm-card .nm-confetti { position: absolute; color: #8f82e6; }
 .nm-card .nm-kicker { margin: 0 0 12px; font-size: 12px; letter-spacing: 0.5px; color: var(--nm-purple); }
 .nm-card .nm-badge {
   width: 72px; height: 72px; margin: 0 auto 14px; border-radius: 50%;
@@ -134,7 +134,8 @@ body {
 .nm-card .nm-tagline { margin: 3px 0 16px; font-size: 14px; color: var(--nm-purple); }
 .nm-card .nm-desc { margin: 0 0 16px; font-size: 14px; line-height: 1.5; color: #3c3489; }
 .nm-card .nm-closing { margin: 0; font-style: italic; font-size: 14px; line-height: 1.5; color: var(--nm-purple-deep); }
-.nm-card-logo { display: block; height: 19px; width: auto; margin: 18px auto 2px; opacity: 0.8; }
+.nm-card-cta { margin: 16px 0 0; font-size: 13px; font-weight: 500; color: var(--nm-purple); }
+.nm-card-logo { display: block; height: 19px; width: auto; margin: 10px auto 2px; opacity: 0.85; }
 
 .nm-result-actions { margin-top: 18px; display: flex; flex-direction: column; gap: 12px; }
 .nm-share-row { display: flex; align-items: center; justify-content: center; gap: 20px; color: var(--nm-purple); }
@@ -145,6 +146,18 @@ body {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
+
+/* ---- answer feedback, calculating, personalized CTA ---- */
+.nm-option:disabled { opacity: 1; cursor: default; }
+.nm-option.is-selected { border-color: var(--nm-pink); background: #fff5f9; box-shadow: 0 2px 0 rgba(255, 46, 136, 0.18); }
+.nm-option.is-selected::after { opacity: 1; transform: translateY(-50%); }
+
+.nm-cta-lead { margin: 0 0 2px; font-size: 14px; line-height: 1.4; color: var(--nm-purple-deep); font-weight: 500; text-align: center; }
+
+.nm-calc { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; }
+.nm-calc-ast { color: var(--nm-pink); animation: nm-spin 0.9s linear infinite; }
+.nm-calc-text { margin: 0; font-size: 17px; font-weight: 500; color: var(--nm-purple-deep); }
+@keyframes nm-spin { to { transform: rotate(360deg); } }
 
 /* ---- entrance animations ---- */
 @keyframes nm-pop { from { opacity: 0; transform: translateY(12px) scale(0.88); } to { opacity: 1; transform: none; } }

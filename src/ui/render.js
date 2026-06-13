@@ -1,7 +1,7 @@
 import { archetypes, CLOSING_LINE, CTA_URL } from '../data/archetypes.js';
 import { icon } from './icons.js';
 
-const LOGO_SRC = './logo-nunca-madres-negro.avif';
+const LOGO_SRC = './logo-nunca-madres-negro.png';
 
 export function renderIntro(root, { onStart }) {
   root.classList.add('nm-cover-mode');
@@ -55,9 +55,26 @@ export function renderScene(root, { scene, index, total, onAnswer }) {
     </div>
     <p style="margin:0 0 8px;font-size:13px;color:var(--nm-muted)">¿Cómo respondes?</p>
     <div class="nm-options">${options}</div>`;
-  root.querySelectorAll('.nm-option').forEach((btn) => {
-    btn.addEventListener('click', () => onAnswer(btn.dataset.style));
+  const buttons = root.querySelectorAll('.nm-option');
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (root.querySelector('.nm-option.is-selected')) return;
+      btn.classList.add('is-selected');
+      buttons.forEach((b) => {
+        b.disabled = true;
+      });
+      setTimeout(() => onAnswer(btn.dataset.style), 280);
+    });
   });
+}
+
+export function renderCalculating(root) {
+  root.classList.remove('nm-cover-mode');
+  root.innerHTML = `
+    <div class="nm-calc">
+      ${icon('asterisk', { size: 46, cls: 'nm-calc-ast' })}
+      <p class="nm-calc-text">Calculando tu estilo…</p>
+    </div>`;
 }
 
 export function buildResultCardHtml(result) {
@@ -77,6 +94,7 @@ export function buildResultCardHtml(result) {
       ${toque}
       <p class="nm-desc">${a.description}</p>
       <p class="nm-closing">"${CLOSING_LINE}"</p>
+      <p class="nm-card-cta">¿Cuál te sale a ti? Haz el test.</p>
       <img class="nm-card-logo" src="${LOGO_SRC}" alt="Nunca Madres" />
     </div>`;
 }
@@ -87,6 +105,7 @@ export function renderResult(root, { result, onShare, onCta, onReplay }) {
     <h2 class="sr-only">Tu estilo para responder es ${archetypes[result.primary].name}</h2>
     ${buildResultCardHtml(result)}
     <div class="nm-result-actions">
+      <p class="nm-cta-lead">En el Círculo hay más mujeres como tú, ${archetypes[result.primary].name}. 💜</p>
       <a class="nm-cta-primary" id="nm-cta" href="${CTA_URL}" target="_blank" rel="noopener"
          style="background:var(--nm-purple)">Únete al Círculo Nunca Madres <span aria-hidden="true">→</span></a>
       <div class="nm-share-row">

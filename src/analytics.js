@@ -6,8 +6,28 @@ export const EVENTS = {
   CTA_CLICKED: 'nm_cta_clicked',
 };
 
+// Loads GA4 (gtag) when a measurement id is provided. No id => no-op, and
+// events still flow to window.dataLayer for a GTM container if present.
+export function initAnalytics(measurementId) {
+  if (typeof window === 'undefined' || !measurementId) return;
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    window.dataLayer.push(arguments);
+  }
+  window.gtag = window.gtag || gtag;
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + measurementId;
+  document.head.appendChild(s);
+  window.gtag('js', new Date());
+  window.gtag('config', measurementId);
+}
+
 export function track(event, params = {}) {
   if (typeof window === 'undefined') return;
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ event, ...params });
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', event, params);
+  }
 }

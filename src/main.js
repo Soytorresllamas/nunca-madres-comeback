@@ -3,12 +3,18 @@ import { PRIORITY } from './data/archetypes.js';
 import { STYLES } from './data/scenes.js';
 import { createGame, start, answer, reset } from './game/state.js';
 import { tally, determineArchetype } from './game/scoring.js';
-import { renderIntro, renderScene, renderResult } from './ui/render.js';
+import { renderIntro, renderScene, renderCalculating, renderResult } from './ui/render.js';
 import { shareResult } from './ui/share.js';
-import { track, EVENTS } from './analytics.js';
+import { track, EVENTS, initAnalytics } from './analytics.js';
+
+// Pega aquí el ID de GA4 (formato G-XXXXXXXXXX) para activar la medición.
+// Vacío = no envía nada (los eventos siguen yendo a dataLayer para GTM).
+const GA4_MEASUREMENT_ID = '';
+initAnalytics(GA4_MEASUREMENT_ID);
 
 const root = document.getElementById('app');
 let game = createGame(scenes);
+let revealed = false;
 
 function paint() {
   if (game.step === 'intro') {
@@ -37,12 +43,21 @@ function paint() {
     });
   } else {
     const result = determineArchetype(tally(game.answers, STYLES), PRIORITY);
+    if (!revealed) {
+      renderCalculating(root);
+      setTimeout(() => {
+        revealed = true;
+        paint();
+      }, 1300);
+      return;
+    }
     renderResult(root, {
       result,
       onShare: (channel) => shareResult(channel, document.getElementById('nm-card')),
       onCta: () => track(EVENTS.CTA_CLICKED, { archetype: result.primary }),
       onReplay: () => {
         game = reset(game);
+        revealed = false;
         paint();
       },
     });
