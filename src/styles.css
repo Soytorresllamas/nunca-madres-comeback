@@ -134,6 +134,7 @@ body {
 .nm-card .nm-tagline { margin: 3px 0 16px; font-size: 14px; color: var(--nm-purple); }
 .nm-card .nm-desc { margin: 0 0 16px; font-size: 14px; line-height: 1.5; color: #3c3489; }
 .nm-card .nm-closing { margin: 0; font-style: italic; font-size: 14px; line-height: 1.5; color: var(--nm-purple-deep); }
+.nm-card-logo { display: block; height: 19px; width: auto; margin: 18px auto 2px; opacity: 0.8; }
 
 .nm-result-actions { margin-top: 18px; display: flex; flex-direction: column; gap: 12px; }
 .nm-share-row { display: flex; align-items: center; justify-content: center; gap: 20px; color: var(--nm-purple); }

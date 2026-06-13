@@ -77,15 +77,13 @@ export function buildResultCardHtml(result) {
       ${toque}
       <p class="nm-desc">${a.description}</p>
       <p class="nm-closing">"${CLOSING_LINE}"</p>
+      <img class="nm-card-logo" src="${LOGO_SRC}" alt="Nunca Madres" />
     </div>`;
 }
 
 export function renderResult(root, { result, onShare, onCta, onReplay }) {
   root.classList.remove('nm-cover-mode');
   root.innerHTML = `
-    <div class="nm-topbar nm-topbar--center">
-      <img class="nm-logo nm-logo--sm" src="${LOGO_SRC}" alt="Nunca Madres" />
-    </div>
     <h2 class="sr-only">Tu estilo para responder es ${archetypes[result.primary].name}</h2>
     ${buildResultCardHtml(result)}
     <div class="nm-result-actions">
