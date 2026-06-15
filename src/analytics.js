@@ -6,8 +6,8 @@ export const EVENTS = {
   CTA_CLICKED: 'nm_cta_clicked',
 };
 
-// Loads GA4 (gtag) when a measurement id is provided. No id => no-op, and
-// events still flow to window.dataLayer for a GTM container if present.
+// Loads GA4 (gtag) when a measurement id is provided. No id => analytics
+// is a no-op.
 export function initAnalytics(measurementId) {
   if (typeof window === 'undefined' || !measurementId) return;
   window.dataLayer = window.dataLayer || [];
@@ -24,10 +24,7 @@ export function initAnalytics(measurementId) {
 }
 
 export function track(event, params = {}) {
-  if (typeof window === 'undefined') return;
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({ event, ...params });
-  if (typeof window.gtag === 'function') {
+  if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
     window.gtag('event', event, params);
   }
 }

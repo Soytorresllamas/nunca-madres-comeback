@@ -1,15 +1,18 @@
-export function tally(answerStyles, styles) {
-  const counts = Object.fromEntries(styles.map((s) => [s, 0]));
+import { STYLES } from '../data/scenes.js';
+import { PRIORITY } from '../data/archetypes.js';
+
+export function tally(answerStyles) {
+  const counts = Object.fromEntries(STYLES.map((s) => [s, 0]));
   for (const style of answerStyles) {
     if (style in counts) counts[style] += 1;
   }
   return counts;
 }
 
-export function determineArchetype(counts, priority) {
-  const ranked = [...priority].sort((a, b) => {
+export function determineArchetype(counts) {
+  const ranked = [...PRIORITY].sort((a, b) => {
     if (counts[b] !== counts[a]) return counts[b] - counts[a];
-    return priority.indexOf(a) - priority.indexOf(b);
+    return PRIORITY.indexOf(a) - PRIORITY.indexOf(b);
   });
 
   const primary = ranked[0];

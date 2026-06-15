@@ -6,7 +6,6 @@ export const scenes = [
     faceta: 'Comida familiar',
     icon: 'home',
     speaker: 'Mamá',
-    speakerInitials: 'MA',
     question: "¿Y los hijos pa' cuándo? No te esperes tanto…",
     options: [
       { style: 'zen', text: 'Estoy justo donde quiero estar, ma. En paz.' },
@@ -20,7 +19,6 @@ export const scenes = [
     faceta: 'Junta de trabajo',
     icon: 'briefcase',
     speaker: 'RH',
-    speakerInitials: 'RH',
     question: '¿Tienes planes de familia pronto?',
     options: [
       { style: 'zen', text: 'Mi plan es este proyecto. Sigamos.' },
@@ -34,7 +32,6 @@ export const scenes = [
     faceta: 'Consulta médica',
     icon: 'medical',
     speaker: 'Doctor',
-    speakerInitials: 'DR',
     question: 'A tu edad ya deberías congelar óvulos, por si te arrepientes.',
     options: [
       { style: 'zen', text: 'Gracias, pero no me arrepiento de algo que sí decidí.' },
@@ -48,7 +45,6 @@ export const scenes = [
     faceta: 'Boda de la amiga',
     icon: 'rings',
     speaker: 'Tía',
-    speakerInitials: 'TÍ',
     question: "Tú sigues… ¿pa' cuándo la tuya y los bebés?",
     options: [
       { style: 'zen', text: 'Yo ya estoy completa, tía. Salud.' },
@@ -62,7 +58,6 @@ export const scenes = [
     faceta: 'Brunch con amigas',
     icon: 'coffee',
     speaker: 'Amiga',
-    speakerInitials: 'AM',
     question: 'No sabes lo que es el amor de verdad hasta que eres mamá.',
     options: [
       { style: 'zen', text: 'El amor tiene mil formas, y yo vivo la mía plena.' },
@@ -76,7 +71,6 @@ export const scenes = [
     faceta: 'Sobremesa',
     icon: 'armchair',
     speaker: 'Suegros',
-    speakerInitials: 'SU',
     question: '¿Y quién te va a cuidar de viejita?',
     options: [
       { style: 'zen', text: 'Estoy construyendo una vejez que ya planeé, con calma.' },

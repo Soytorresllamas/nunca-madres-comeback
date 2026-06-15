@@ -77,7 +77,7 @@ export function renderCalculating(root) {
     </div>`;
 }
 
-export function buildResultCardHtml(result) {
+function buildResultCardHtml(result) {
   const a = archetypes[result.primary];
   const toque = result.secondary
     ? `<p class="nm-tagline">con un toque de ${archetypes[result.secondary].name.replace('La ', '')}</p>`

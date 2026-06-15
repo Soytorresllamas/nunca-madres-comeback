@@ -24,7 +24,7 @@ describe('scenes data', () => {
 
   it('every scene field and option text is a non-empty string', () => {
     for (const scene of scenes) {
-      for (const key of ['id', 'faceta', 'icon', 'speaker', 'speakerInitials', 'question']) {
+      for (const key of ['id', 'faceta', 'icon', 'speaker', 'question']) {
         expect(typeof scene[key]).toBe('string');
         expect(scene[key].length).toBeGreaterThan(0);
       }

@@ -1,4 +1,4 @@
-import { rasterizeToPng } from './shareCard.js';
+import html2canvas from 'html2canvas';
 import { track, EVENTS } from '../analytics.js';
 
 const SHARE_TEXT = 'Hice el test de Nunca Madres y este es mi estilo para responder las preguntas necias 💜';
@@ -10,7 +10,11 @@ function quizUrl() {
 }
 
 async function buildCardFile(cardNode) {
-  const blob = await rasterizeToPng(cardNode);
+  // Wait for images (logo) to decode so they don't render blank, then snapshot.
+  const imgs = [...cardNode.querySelectorAll('img')];
+  await Promise.all(imgs.map((img) => img.decode().catch(() => {})));
+  const canvas = await html2canvas(cardNode, { backgroundColor: null, scale: 2, useCORS: true });
+  const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
   return new File([blob], 'mi-comeback-nunca-madres.png', { type: 'image/png' });
 }
 

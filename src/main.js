@@ -1,6 +1,4 @@
 import { scenes } from './data/scenes.js';
-import { PRIORITY } from './data/archetypes.js';
-import { STYLES } from './data/scenes.js';
 import { createGame, start, answer, reset } from './game/state.js';
 import { tally, determineArchetype } from './game/scoring.js';
 import { renderIntro, renderScene, renderCalculating, renderResult } from './ui/render.js';
@@ -8,7 +6,7 @@ import { shareResult } from './ui/share.js';
 import { track, EVENTS, initAnalytics } from './analytics.js';
 
 // Pega aquí el ID de GA4 (formato G-XXXXXXXXXX) para activar la medición.
-// Vacío = no envía nada (los eventos siguen yendo a dataLayer para GTM).
+// Vacío = no se mide nada.
 const GA4_MEASUREMENT_ID = 'G-VB8SCYWBNK';
 initAnalytics(GA4_MEASUREMENT_ID);
 
@@ -35,14 +33,14 @@ function paint() {
         track(EVENTS.SCENE_ANSWERED, { scene: scene.id, style });
         game = answer(game, style);
         if (game.step === 'result') {
-          const result = determineArchetype(tally(game.answers, STYLES), PRIORITY);
+          const result = determineArchetype(tally(game.answers));
           track(EVENTS.GAME_COMPLETED, { archetype: result.primary, secondary: result.secondary });
         }
         paint();
       },
     });
   } else {
-    const result = determineArchetype(tally(game.answers, STYLES), PRIORITY);
+    const result = determineArchetype(tally(game.answers));
     if (!revealed) {
       renderCalculating(root);
       setTimeout(() => {
